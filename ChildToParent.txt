@@ -1,0 +1,31 @@
+PARENT:
+function App() {
+  const handleSubmit = (term) => {
+    console.log("Do a search with", term);
+  };
+
+  return (
+    <div className="App">
+      <SearchBar onSubmit={handleSubmit} />  // (1)подаваме функцията handleSubmit като пропс с име onSubmit
+    </div>
+  );
+}
+
+export default App;
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+CHILD:
+const SearchBar = ({ onSubmit }) => {
+  const handleClick = () => {    // (3) функцията handleClick се извиква и в нея се извиква подадената като пропс функция onSubmit("cars") с параметър cars;
+    onSubmit("cars"); 
+  };
+
+  return (
+    <>
+      <input />
+      <button onClick={handleClick}>Click me</button>  // (2) извикваме handleClick фунцкията 
+    </>
+  );
+};
+
+export default SearchBar;
+
